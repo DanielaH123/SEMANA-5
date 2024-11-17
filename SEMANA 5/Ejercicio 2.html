@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, Papel o Tijera</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .juego {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[readonly] {
+            background-color: #f0f0f0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5e330b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #d66b13;
+        }
+    </style>
+</head>
+<body>
+    <div class="juego">
+        <h1>Piedra, Papel o Tijera</h1>
+     
+        <input type="text" id="usuario-opcion" placeholder="Piedra, Papel o Tijera">
+        <button id="jugar">Jugar</button>
+        
+       
+        <p>Opción de la computadora:</p>
+        <input type="text" id="computadora-opcion" readonly>
+        <p>Resultado:</p>
+        <input type="text" id="resultado" readonly>
+    </div>
+    <script>
+        
+        document.getElementById('jugar').addEventListener('click', function() {
+            const opciones = ["Piedra", "Papel", "Tijera"]; // Opciones posibles
+            const usuarioOpcion = document.getElementById('usuario-opcion').value.toLowerCase(); // Convertir entrada a minúsculas
+            const computadoraOpcion = opciones[Math.floor(Math.random() * 3)]; // Selección aleatoria
+
+          
+            document.getElementById('computadora-opcion').value = computadoraOpcion;
+
+            
+            if (usuarioOpcion !== "piedra" && usuarioOpcion !== "papel" && usuarioOpcion !== "tijera") {
+                document.getElementById('resultado').value = "Opción no válida.";
+                return; 
+            }
+
+            // Determinar el resultado
+            if (usuarioOpcion === computadoraOpcion.toLowerCase()) {
+                document.getElementById('resultado').value = "Empate.";
+            } else if (
+                (usuarioOpcion === "piedra" && computadoraOpcion === "Tijera") ||
+                (usuarioOpcion === "papel" && computadoraOpcion === "Piedra") ||
+                (usuarioOpcion === "tijera" && computadoraOpcion === "Papel")
+            ) {
+                document.getElementById('resultado').value = "Ganaste.";
+            } else {
+                document.getElementById('resultado').value = "Perdiste.";
+            }
+        });
+    </script>
+</body>
+</html>

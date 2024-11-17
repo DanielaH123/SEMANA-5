@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Crédito</title>
+    <style>
+        /* Estilos básicos para el diseño */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4c56af;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #8d1f7e;
+        }
+
+        input[readonly] {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simulador de Crédito</h1>
+        <!-- Formulario para ingresar los datos -->
+        <label for="monto">Monto de Inversión:</label>
+        <input type="number" id="monto" placeholder="Ingresa el monto">
+
+        <label for="tasa">Tasa de Interés (%):</label>
+        <input type="number" id="tasa" placeholder="Ingresa la tasa anual">
+
+        <button id="calcular">Calcular</button>
+
+        <label for="resultado">Total después de un año:</label>
+        <input type="text" id="resultado" placeholder="Aquí se verá el resultado" readonly>
+    </div>
+
+    <script>
+        // Escuchamos el clic en el botón "Calcular"
+        document.getElementById('calcular').addEventListener('click', function () {
+            // Obtenemos los valores ingresados por el usuario
+            const monto = parseFloat(document.getElementById('monto').value);
+            const tasa = parseFloat(document.getElementById('tasa').value);
+
+            // Verificamos si los valores son válidos
+            if (isNaN(monto) || isNaN(tasa)) {
+                alert("Por favor, ingresa valores numéricos válidos.");
+                return; // Salimos de la función si hay error
+            }
+
+            // Calculamos el total después de un año
+            const total = monto + (monto * (tasa / 100));
+
+            // Mostramos el resultado en el campo de texto
+            document.getElementById('resultado').value = total.toFixed(2);
+        });
+    </script>
+</body>
+</html>
