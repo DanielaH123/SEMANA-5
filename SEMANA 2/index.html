@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información Personal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3 id="nombre-completo"></h3>
+    <h2>Formación o Carrera</h2>
+    <p id="formacion"></p>
+    
+    <h1>Datos Personales</h1>
+    <table>
+        <tr>
+            <th>Nombre Completo</th>
+            <td id="datos-nombre"></td>
+        </tr>
+        <tr>
+            <th>Edad</th>
+            <td id="edad"></td>
+        </tr>
+        <tr>
+            <th>Correo Electrónico</th>
+            <td id="correo"></td>
+        </tr>
+    </table>
+
+    <h1>Mis Hobbies</h1>
+    <div class="hobbies-container">
+        <ul id="hobbies"></ul>
+        <div>
+            <h1>FOTO</h1>
+            <img id="foto-hobby" src="/foto.jpg" alt="Foto">
+        </div>
+    </div>
+
+    <h1>Calcular Información</h1>
+    <table>
+        <tr>
+            <th>Fecha</th>
+            <td><input type="date" id="fecha"></td>
+        </tr>
+        <tr>
+            <th>Cédula</th>
+            <td><input type="text" id="cedula"></td>
+        </tr>
+    </table>
+
+    <h3>Calcular Diferencia</h3>
+    <p>Años, meses y días: <input type="text" id="diferencia" readonly></p>
+    <p>Validez de Cédula: <input type="text" id="validacion-cedula" readonly></p>
+    <button onclick="calcular()">Calcular</button>
+    <script src="Funciones.js"></script>
+</body>
+</html>
